@@ -1,23 +1,20 @@
 public class Bush extends Plant {
-
-
-    public Bush(String nameOfPlant, double plantHeight) {
-        super(nameOfPlant, plantHeight);
-
-    }
-    public double seasonChange(int season) {
-        double temp = switch (season) {
-            case 1 -> getHeight();
-            case 2 -> getHeight() * 1;
-            case 3 -> getHeight() * 0.5;
-            case 4 -> getHeight() * 0.2;
-            default -> 0;
-        };
-
-        return temp;
+    private final int SUMMER_GROW = 50;
+    private final int AUTUMN_GROW =  20;
+    private final int WINTER_GROW =  0;
+    public Bush(String name, int springGrow, int seedlingHeight) {
+        super(name, springGrow, seedlingHeight);
     }
     @Override
-    public String toString() {
-        return getNameOfPlant() + getHeight() + getSeasonOfTheYear();
+    public int getSUMMER_GROW() {
+        return SUMMER_GROW;
+    }
+    @Override
+    public int getAUTUMN_GROW() {
+        return AUTUMN_GROW;
+    }
+    @Override
+    public int getWINTER_GROW() {
+        return WINTER_GROW;
     }
 }

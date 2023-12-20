@@ -1,33 +1,49 @@
 public class Main {
     public static void main(String[] args) {
+        Tree t1 = new Tree("apple",20, 100,300);
+        Flower f1 = new Flower("rose",5);
+        Bush b1 = new Bush("curant", 30, 50);
 
-        Tree tuja = new Tree("Туя", 1, 6);
-        Bush roseHip = new Bush("Шиповник", 0.5);
-        Flower gladiolus = new Flower("Гладиолус", 0.3);
+        Plant[] plants = new Plant[]{b1,f1,t1};
+        print(plants);
 
-        Plant[] plants = {tuja, roseHip, gladiolus};
+        System.out.println(" ---------------- grow spring ");
+        setSeason(plants,"spring");
+        grow(plants);
+        print(plants);
 
-        growBySeason(plants);
+        System.out.println(" ---------------- grow summer ");
+        setSeason(plants,"summer");
+        grow(plants);
+        print(plants);
+
+        System.out.println(" ---------------- grow autumn ");
+        setSeason(plants,"autumn");
+        grow(plants);
+        print(plants);
+
+        System.out.println(" ---------------- grow winter ");
+        setSeason(plants,"winter");
+        grow(plants);
+        print(plants);
 
 
     }
-
-    public static void changeSeasons() {
-
-    }
-
-
-    public static void growBySeason(Plant[] plants) {
-        for (Plant plant : plants) {
-            System.out.println(plant.seasonChange(3));
+    public static void print(Plant[] garden){
+        for (Plant plant:garden){
             System.out.println(plant);
+
+        }
+    }
+    public static void setSeason(Plant[] garden, String season){
+        for (Plant plant:garden){
+            plant.setSeason(season);
         }
     }
 
-
-
-    public static void actualGardenState() {
-
-
+    public static void grow(Plant[] garden){
+        for (Plant plant:garden){
+            plant.grow();
+        }
     }
 }

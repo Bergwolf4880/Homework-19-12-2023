@@ -1,28 +1,29 @@
-public class Tree extends Plant {
+public class Tree extends Plant{
+    private final int maxHeight;
+    private int SUMMER_GROW = 100;
+    private int AUTUMN_GROW =  50;
+    private int WINTER_GROW =  30;
 
-    private double maxHeight;
-
-    public Tree(String nameOfPlant, double plantHeight, double maxHeight) {
-        super(nameOfPlant, plantHeight);
-
+    public Tree(String name, int springGrow,  int seedlingHeight, int maxHeight) {
+        super(name, springGrow,seedlingHeight);
         this.maxHeight = maxHeight;
+
     }
-    private boolean isPlantGrown(){
-        return getHeight()<maxHeight;
-    }
-    public double seasonChange(int season) {
-        double temp=0;
-        if (isPlantGrown()) {
-            switch (season) {
-                case 1 : temp = getHeight() * 0.3;
-                case 2, 3 : temp = getHeight() * 1;
-                case 4 : temp =  getHeight() * 0.5;
-                break;
-            };
-        }return temp;
+
+    public int getMaxHeight() {
+        return maxHeight;
     }
     @Override
-    public String toString() {
-        return getNameOfPlant()+getHeight()+getSeasonOfTheYear();
+    public int getSUMMER_GROW() {
+        return SUMMER_GROW;
     }
+    @Override
+    public int getAUTUMN_GROW() {
+        return AUTUMN_GROW;
+    }
+    @Override
+    public int getWINTER_GROW() {
+        return WINTER_GROW;
+    }
+
 }

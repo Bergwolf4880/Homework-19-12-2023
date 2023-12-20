@@ -1,26 +1,71 @@
 public abstract class Plant {
+    private final String name;
+    private int height;
+    private final int springGrow;
+    private String season;
 
-    private String nameOfPlant;
 
-    private double height;
-
-    private String seasonOfTheYear;
-
-    public Plant(String nameOfPlant, double plantHeight) {
-        this.nameOfPlant = nameOfPlant;
-        this.height = plantHeight;
+    public Plant(String name, int springGrow) {
+        this(name, springGrow,0);
     }
-    public double getHeight() {
+
+    public Plant(String name, int springGrow, int seedlingHeight) {
+        this.name = name;
+        this.springGrow = springGrow;
+        this.season = "spring";
+        this.height = seedlingHeight;
+    }
+
+
+    //region GET-SET
+    public abstract int getAUTUMN_GROW();
+    public abstract int getWINTER_GROW();
+    public abstract int getSUMMER_GROW();
+
+    public int getSpringGrow() {
+        return springGrow;
+    }
+    public void setSeason(String season) {
+        this.season = season;
+    }
+    public void setHeight(int height) {
+        this.height = height;
+    }
+    public String getName() {
+        return name;
+    }
+    public int getHeight() {
         return height;
     }
+    public String getSeason() {
+        return season;
+    }
+    //endregion
 
-    public String getNameOfPlant() {
-        return nameOfPlant;
+
+    public void grow() {
+        switch (season){
+            case "spring": setHeight(height + springGrow); break;
+            case "summer": seasonGrow(getSUMMER_GROW());break;
+            case "autumn": seasonGrow(getAUTUMN_GROW());break;
+            case "winter": seasonGrow(getWINTER_GROW());break;
+        }
     }
 
-    public String getSeasonOfTheYear() {
-        return seasonOfTheYear;
+//    private boolean isPlantGrown(){
+//        return getHeight()<getMaxHeight();
+//    }
+
+    private void seasonGrow(int factor){
+        int change =  (int)Math.round(getSpringGrow()/100.0 * factor);
+        setHeight(height+change);
     }
-    public abstract double seasonChange(int season);
-    public abstract String toString();
+    public String toString() {
+        return "Plant{" +
+                "name='" + name + '\'' +
+                ", height=" + height +
+                ", springGrow=" + springGrow +
+                ", season='" + season + '\'' +
+                '}';
+    }
 }
